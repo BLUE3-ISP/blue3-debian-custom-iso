@@ -60,6 +60,12 @@ down is not an exception. Nothing else in this block bends: the changelog entry,
 subject, the language, one subject per commit, and committing before you report done
 all hold regardless.
 
+**All of this governs the repositories we own.** In a repository that is not
+ours, the host's commit convention governs instead — their subject line, in
+their language. `X.Y.Z` is meaningless where there is no `version.md` of ours,
+and there is no version there for us to bump. Our versioning rules govern our
+remotes, not every remote we can push to.
+
 **One subject per commit.** The subject has to describe the whole commit
 honestly. The moment your description needs an "and" to be true, it is two
 commits.
@@ -80,6 +86,89 @@ big or its subject is too vague, and both are fixed the same way.
 <!-- /COMMIT-RULE -->
 
 ---
+
+<!-- LANGUAGE-RULE:repodocs -->
+
+## Idioma — este repositório é escrito em português
+
+> Eco marcado. A fonte única é **[samirhvbr/repodocs](https://github.com/samirhvbr/repodocs/blob/master/docs/conventions.md#the-blue3-internal-repositories-are-written-in-portuguese)**
+> — mude lá, não aqui. Este bloco é regenerado.
+
+**Tudo que vive neste repositório, ou na interface do GitHub em volta dele, é
+escrito em português**: documentos, **mensagens de commit**, títulos e corpos de
+pull request, issues, comentários de código, entradas de changelog, notas de
+release.
+
+Este é um dos dois repositórios-exceção da regra de inglês da frota, e a
+fronteira é o **dono no GitHub**: `BLUE3-ISP/*`, `samirhvbr/blue3-intranet` e
+`samirhvbr/blue3-ai-login`. O motivo é o leitor: ninguém de fora da empresa abre
+estes repositórios, e boa parte do que se escreve neles é raciocínio operacional
+— um incidente, uma fila, um runbook — onde a precisão da frase é o valor.
+Traduzir custa mais do que rende.
+
+**Só o idioma muda.** Formato do commit: `X.Y.Z - descrição curta em português`.
+A versão vem do `version.md` e é bumpada no mesmo commit. Prefixos de
+Conventional Commits (`feat:`, `fix:`, `chore:`) e mensagens vagas de uma
+palavra continuam proibidos, um assunto por commit continua valendo, e a entrada
+do `CHANGELOG.md` continua sendo escrita antes — o cabeçalho dela **é** o
+subject.
+
+**Identificadores de código são em inglês**, aqui como em qualquer repositório
+da frota.
+
+O histórico não se reescreve: mensagem em inglês que já está no log fica como
+está.
+
+**A `.continue/` é fila, não registro.** Um documento só sai dela quando a coisa
+que ele descreve **existe** — tamanho, idioma e desalinho não são condição de
+saída. *Produzir* um item da fila é fazer a coisa existir, não editar, traduzir
+ou promover o documento; apagá-lo é o último passo do commit que carrega o
+trabalho. **Nunca esvazie essa pasta como arrumação.**
+
+**Num repositório que não é nosso, a convenção do upstream vence** — o idioma e
+o formato do commit. Abrir um pull request ou uma issue num repositório de
+terceiro faz de nós convidados, e convidado escreve na língua da casa. Nosso
+`X.Y.Z - descrição` não significa nada lá: eles não têm um `version.md` nosso, e
+não há versão nossa para bumpar. Quando não der para saber, escreva **inglês
+(US)** — é a regra da casa da frota.
+
+<!-- /LANGUAGE-RULE -->
+
+<!-- QUEUE-RULE:repodocs -->
+
+## A fila esvazia por produção, e por mais nada
+
+> Eco marcado. A fonte única é **[samirhvbr/repodocs](https://github.com/samirhvbr/repodocs/blob/master/docs/conventions.md#1-continue-is-the-queue--docs-is-what-has-been-produced)**
+> — mude lá, não aqui. Este bloco é regenerado.
+
+**A `.continue/` guarda trabalho que ainda não existe.** Um documento só sai dela
+quando — e **somente quando** — a coisa que ele descreve **existe**. Tamanho não
+é condição de saída. Idade, idioma, desalinho, fim de sessão e agente que teria
+escrito diferente também não.
+
+> `tela.md` diz *"uma tela preta com uma bola amarela no meio"*. Ele sai da fila
+> quando existir uma tela preta com uma bola amarela. Até lá ele fica, do
+> tamanho que for, na forma em que estiver — porque até lá ele é o único lugar
+> onde essa tela existe.
+
+**"Produzir" um item da fila é fazer a coisa existir.** Não é editar o
+documento, não é traduzir, não é promover para `docs/`. O documento é a
+especificação; a entrega é a coisa. Apagar o documento é o **último passo do
+commit que carrega o trabalho** — nunca um passo sozinho.
+
+**Nunca esvazie essa pasta como arrumação.** Um item apagado sem o trabalho
+feito destrói o único artefato que um projeto tem antes de ter código — e o que
+costuma ficar no lugar é pior que a perda: uma página em `docs/` descrevendo uma
+tela que ninguém construiu, indistinguível de uma que descreve algo que existe.
+Se um plano precisa aparecer em `docs/` antes de ser construído, ele é
+`PROPOSED`, nunca `ACTIVE`.
+
+**A regra da meia página é sobre registro que foi parar na fila**, e sobre nada
+mais. Ela não tem opinião sobre o tamanho de uma especificação de coisa não
+feita: um brief de 1.300 linhas sobre algo que não existe está no único lugar
+onde pode estar. Item longo é projeto com muita coisa por construir.
+
+<!-- /QUEUE-RULE -->
 
 <!-- RELEASES-RULE:repodocs -->
 
@@ -107,22 +196,5 @@ A PR publishes nothing while it is a PR. The moment it merges, the push moves
 `version.md` on the default branch and the Release becomes that version.
 
 Tag and Release title are the **bare version — no `v` prefix**.
-
-## Language — English (US), everywhere in the repository
-
-**Everything that lives in this repository, or in GitHub's interface around it,
-is written in English (US)**: documents, **commit messages**, pull request titles
-and bodies, issues, code comments, changelog entries, release notes.
-
-Commit format: `X.Y.Z - short description in English`. The version comes from
-`version.md` and is bumped in the same commit. Conventional Commits prefixes
-(`feat:`, `fix:`, `chore:`) and vague one-word messages are forbidden.
-
-**Exactly one carve-out:** end-user-facing strings — UI text, transactional
-email, product copy. That is product i18n for a Brazilian audience, not
-repository content.
-
-History is not rewritten: Portuguese messages already in the log stay as they
-are.
 
 <!-- /RELEASES-RULE -->
