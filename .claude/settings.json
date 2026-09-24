@@ -1,11 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "_comment_perfil": "PERFIL OPUS-ONLY — Opus 5 em tudo, janela 1M explicita via sufixo [1m] no model. NAO adicionar CLAUDE_CODE_DISABLE_1M_CONTEXT aqui: e ela que derruba a janela pra 200K. effortLevel maximo aceito em arquivo e 'xhigh'; 'max' so por sessao (/effort max ou CLAUDE_CODE_EFFORT_LEVEL=max no env).",
-  "model": "opus[1m]",
+  "_comment_perfil": "SEM CHAVE `model`, DE PROPOSITO (24/09/2026 — ADR-026 do repodocs). Pin escrito aqui nao vence: os settings gerenciados pela conta tem precedencia sobre qualquer arquivo local. E `opus[1m]` era pin de versao disfarçado de janela — a variante 1M so existia na Opus anterior, entao toda sessao nascia nela enquanto o catalogo ja oferecia a mais nova. Para pinar de novo, NOMEIE a versao: \"model\": \"opus55\". O effortLevel maximo aceito em ARQUIVO e 'xhigh'; 'max' so por sessao (/effort max).",
   "effortLevel": "xhigh",
   "env": {
-    "CLAUDE_CODE_SUBAGENT_MODEL": "opus",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-5"
+    "CLAUDE_CODE_SUBAGENT_MODEL": "opus"
   },
   "permissions": {
     "_comment": "Permissoes do projeto - shell/scripts",
