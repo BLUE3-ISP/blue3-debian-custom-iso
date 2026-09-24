@@ -3,14 +3,17 @@
 Stack: **Shell / build de ISO**.
 
 ## Arquivos
-- `settings.json` — perfil ATIVO (Opus-only).
+- `settings.json` — configuracao ATIVA do projeto (permissoes e effort; nao escolhe modelo).
 - `settings.local.json` — override local (gitignored), precede o settings.json.
-- `json-opus` / `json-fable5-opus` / `json-fable5-opus-sonnet` — templates stand-by (`cp <tpl> settings.json` p/ trocar).
 
-## Modelo (todos os perfis)
+## Modelo
+- **O modelo e escolha do usuario**, por sessao, com `/model`. O repositorio nao escolhe
+  modelo (repodocs ADR-027).
+- `settings.json` nao tem `model`, `fallbackModel` nem `availableModels`, e nao exporta
+  `ANTHROPIC_MODEL`, `ANTHROPIC_DEFAULT_*_MODEL` nem `CLAUDE_CODE_SUBAGENT_MODEL`.
+- **Subagente herda o modelo da sessao.** Nao ha perfis stand-by para copiar por cima do
+  `settings.json`: quem troca de modelo e o `/model`.
 - Effort `max` via env `CLAUDE_CODE_EFFORT_LEVEL` (o campo `effortLevel` so aceita low/medium/high/xhigh).
-- 1M nativo no Opus 5 e Fable 5 (sem flag).
-- Fable 5: incluso no Max ate ~22/jun/2026; depois consome creditos. Requer Claude Code v2.1.170+.
 
 ## Permissoes
 - `defaultMode: plan`; denies de seguranca (rm -rf, force push, reset --hard, clean -fd, curl|sh).
