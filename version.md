@@ -1,6 +1,6 @@
 # Versão — Blue3 Debian Custom ISO
 
-**Versão atual:** `0.1.12`
+**Versão atual:** `0.1.13`
 
 Geração de ISO Debian customizada com instalação automatizada via preseed.
 
