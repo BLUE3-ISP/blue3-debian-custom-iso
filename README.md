@@ -79,7 +79,9 @@ sem repetição ou homologação de desempenho nesta revisão.
 ## Verificação e contribuição
 
 ```bash
-bash -n script-iso.sh blue3/blue3_script.sh
+for script in script-iso.sh blue3/blue3_script.sh; do
+  bash -n "$script" || exit
+done
 ```
 
 Esse comando confere sintaxe shell; não executa build, preseed, rede ou systemd.
