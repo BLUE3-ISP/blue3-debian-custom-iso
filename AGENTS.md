@@ -11,9 +11,10 @@
 > **[samirhvbr/repodocs](https://github.com/samirhvbr/repodocs)** — read it
 > there; do not copy it here.
 >
-> Commits: `X.Y.Z - description in English (US)`, with the version coming from
-> `version.md` and bumped in the same commit. Conventional Commits prefixes
-> (`feat:`, `fix:`, `chore:`) and vague messages are forbidden.
+> Commits: `X.Y.Z - descrição curta em português`, com a versão de
+> `version.md`. Consulte os gatilhos locais de bump; correções documentais seguem
+> a exceção expressa quando existente. Prefixos convencionais e mensagens vagas
+> continuam proibidos. O bloco de idioma abaixo prevalece sobre exemplos antigos.
 
 ---
 

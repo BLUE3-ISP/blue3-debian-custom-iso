@@ -41,17 +41,16 @@ X.Y.Z - Descrição curta em português
 
 **Regras inegociáveis:**
 
-1. A versão **sempre** vem deste `version.md` — bumpe **no mesmo commit** da mudança.
+1. A versão vem deste `version.md`; aplique os gatilhos de bump acima e a exceção documental expressa.
 2. Mensagem em **português**, específica o suficiente para `git log --grep`.
 3. **Proibido** Conventional Commits (`feat:`, `fix:`, `chore:`…) e mensagens vagas
    ("ajuste", "update", "wip").
 4. Um objetivo por commit.
 
-> **A skill COMMITTER commita por você neste repo** (existe `.committer.yml` na raiz).
-> Escreva a entrada de changelog abaixo ao concluir a entrega: é **dali** que a
-> mensagem do commit sai, sem custo de modelo. Sem a entrada, a skill cai num
-> fallback que gasta tokens e descreve pior do que você. Detalhe no bloco PS do
-> `CLAUDE.md`.
+> O agente executa commit e push em branch de trabalho e abre PR. A automação
+> COMMITTER está desativada, conforme o bloco normativo atual de `AGENTS.md`.
+> Novas entregas documentais são registradas em [CHANGELOG.md](CHANGELOG.md);
+> as entradas abaixo preservam o histórico anterior.
 
 ---
 
