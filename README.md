@@ -14,7 +14,7 @@ Revisão de fonte em 15/10/2026, base `f1c0ae7` (`0.1.13`).
 | [blue3/blue3_script.sh](blue3/blue3_script.sh) | Rede bootstrap, interface/hostname interativos, consulta PHPIPAM, VLAN opcional e rede definitiva |
 | [blue3/service.one_shot](blue3/service.one_shot) | Unit oneshot que tenta executar o provisionamento no boot |
 | `blue3/ssh/`, `bashrc`, MOTD e banners | Payload de personalização do sistema |
-| `blue3/grub.cfg`, `blue3.png` | Material de referência; o build atual altera menus extraídos e não copia esse grub diretamente |
+| `blue3/grub.cfg`, `blue3.png` | Entram na ISO junto com o resto de `blue3/` (`cp -a`), mas o build não instala esse `grub.cfg` como menu de boot: a variável `GRUB_SRC` é definida e não é usada; o build altera os menus extraídos da ISO base |
 
 O clone tem um template `.env.example`, mas o preseed exige um arquivo chamado
 **`/cdrom/blue3/env`** que não é versionado. Também referencia `sources.list`
@@ -29,9 +29,9 @@ md5sum, find/xargs/sed e sudo; os componentes BIOS/UEFI esperados precisam exist
 na ISO base. O código usa `install.amd`, ISOLINUX e `boot/grub/efi.img`: não promete
 compatibilidade com qualquer netinst, DVD, arquitetura ou formato de initrd.
 
-O diretório **`BASE_DIR` é fixo no código**. Executar de outra pasta não o muda:
-`/home/samir/Webs/b3files/www/files.b3.rs/blue3/debian_blue3_iso`.
-Nesse diretório espera `debian.iso` e a pasta `blue3/`. `BUILD_USER` e `BUILD_GROUP`
+O diretório **`BASE_DIR` é fixo no código** (`script-iso.sh:19`, um caminho absoluto de
+quem montou o build). Executar de outra pasta não o muda; em outra máquina, edite essa
+linha antes de rodar. Nesse diretório o script espera `debian.iso` e a pasta `blue3/`. `BUILD_USER` e `BUILD_GROUP`
 podem vir do ambiente; controlam o dono dos arquivos, não a raiz do build.
 
 A execução operacional é `sudo bash script-iso.sh` no host preparado. Antes dela,
@@ -57,8 +57,10 @@ nenhuma credencial real é reproduzida nesta documentação.
 
 O late_command copia payload para `/target`: script/env, banners, rede, resolv.conf,
 SSH e bashrc; ajusta permissões e tenta habilitar SSH e o serviço de primeiro boot.
-O nome do fragmento versionado é `ssh/ipath.conf` (não `ipauth.conf`); o build usa
-cópia por glob para os `.conf`. Falhas toleradas nessa etapa não são validação.
+O nome do fragmento versionado é `ssh/ipath.conf` (não `ipauth.conf`). Quem copia os
+`.conf` por glob (`cp -a /cdrom/blue3/ssh/*.conf`, com `|| true`) é o late_command do
+preseed durante a instalação, não o `script-iso.sh`. Falhas toleradas nessa etapa não
+são validação.
 
 ## Primeiro boot, operação e recuperação
 
@@ -80,11 +82,12 @@ sem repetição ou homologação de desempenho nesta revisão.
 
 ```bash
 for script in script-iso.sh blue3/blue3_script.sh; do
-  bash -n "$script" || exit
+  bash -n "$script" || break
 done
 ```
 
-Esse comando confere sintaxe shell; não executa build, preseed, rede ou systemd.
+Esse comando confere sintaxe shell (o `break` interrompe no primeiro erro sem fechar o
+terminal, o que um `exit` faria); não executa build, preseed, rede ou systemd.
 O workflow versionado é de release, sem teste de instalação. Os insumos e a imagem
 final precisam de identificação/checksum e prova no alvo em um trabalho separado.
 [AGENTS.md](AGENTS.md) rege contribuições em português por PR; [version.md](version.md)
