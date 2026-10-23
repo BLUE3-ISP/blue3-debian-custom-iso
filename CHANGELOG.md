@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.14 - the echo blocks switch to English (US), following the owner on GitHub
+
+The marked rules in `CLAUDE.md` and `AGENTS.md` are rewritten from the single
+source at [samirhvbr/repodocs](https://github.com/samirhvbr/repodocs), and this
+time the variant changes: the repository carried the Portuguese blocks, and
+`origin` now names `samirhvbr/blue3-debian-custom-iso`, which is outside the Portuguese set
+(`BLUE3-ISP/*`, `samirhvbr/blue3-intranet`, `samirhvbr/blue3-ai-login`). The
+language of a repository follows its owner on GitHub, so every block that has a
+Portuguese variant arrives in English (US).
+
+Only the blocks change in this commit. Text written outside the markers is the
+repository's own, and history is not rewritten: Portuguese messages and
+documents already there stay as they are until they are next touched.
+
 ## 0.1.13 - Corrige no README o papel do grub.cfg, quem copia os .conf do SSH e o caminho fixo do build
 
 O README dizia que o build "não copia" o `grub.cfg`: ele entra na ISO com o resto de `blue3/`, só não é instalado como menu de boot (a variável `GRUB_SRC` não é usada). Dizia também que o build copia os `.conf` do SSH por glob; quem copia é o late_command do preseed. O caminho absoluto de `BASE_DIR` deixa de ser repetido no texto e passa a apontar para `script-iso.sh:19`. A conferência de sintaxe usa `break` em vez de `exit`, que fechava o terminal ao colar o trecho. Correção documental sem bump, conforme version.md.

@@ -97,128 +97,141 @@ big or its subject is too vague, and both are fixed the same way.
 
 <!-- LANGUAGE-RULE:repodocs -->
 
-## Idioma — este repositório é escrito em português
+## Language — English (US) at home, the upstream's when we are guests
 
-> Eco marcado. A fonte única é **[samirhvbr/repodocs](https://github.com/samirhvbr/repodocs/blob/master/docs/conventions.md#the-blue3-internal-repositories-are-written-in-portuguese)**
-> — mude lá, não aqui. Este bloco é regenerado.
+> Marked echo. The single source is **[samirhvbr/repodocs](https://github.com/samirhvbr/repodocs/blob/master/docs/conventions.md#8-language)**
+> — change it there, not here. This block is regenerated.
 
-**Tudo que vive neste repositório, ou na interface do GitHub em volta dele, é
-escrito em português**: documentos, **mensagens de commit**, títulos e corpos de
-pull request, issues, comentários de código, entradas de changelog, notas de
-release.
+**Everything that lives in this repository, or in GitHub's interface around it,
+is written in English (US)**: documents, **commit messages**, pull request titles
+and bodies, issues, code comments, changelog entries, release notes.
 
-Este é um dos dois repositórios-exceção da regra de inglês da frota, e a
-fronteira é o **dono no GitHub**: `BLUE3-ISP/*`, `samirhvbr/blue3-intranet` e
-`samirhvbr/blue3-ai-login`. O motivo é o leitor: ninguém de fora da empresa abre
-estes repositórios, e boa parte do que se escreve neles é raciocínio operacional
-— um incidente, uma fila, um runbook — onde a precisão da frase é o valor.
-Traduzir custa mais do que rende.
+Commit format: `X.Y.Z - short description in English`. The version comes from
+`version.md` and is bumped in the same commit. Conventional Commits prefixes
+(`feat:`, `fix:`, `chore:`) and vague one-word messages are forbidden.
 
-**Só o idioma muda.** Formato do commit: `X.Y.Z - descrição curta em português`.
-A versão vem do `version.md` e é bumpada no mesmo commit. Prefixos de
-Conventional Commits (`feat:`, `fix:`, `chore:`) e mensagens vagas de uma
-palavra continuam proibidos, um assunto por commit continua valendo, e a entrada
-do `CHANGELOG.md` continua sendo escrita antes — o cabeçalho dela **é** o
-subject.
+**Three carve-outs, and only three.** The first is end-user-facing strings — UI
+text, transactional email, product copy: product i18n for a Brazilian audience,
+not repository content. The second is the **Blue3 internal repositories**
+(`BLUE3-ISP/*`, `samirhvbr/blue3-intranet`, `samirhvbr/blue3-ai-login`), which
+are Portuguese throughout — if you are reading this block inside one of them,
+this is the wrong block: they carry `LANGUAGE-RULE-PT`. A repository joins that
+set by a written decision, never by argument.
 
-**Identificadores de código são em inglês**, aqui como em qualquer repositório
-da frota.
+**The third is `.continue/`.** The queue is written in the language its author
+thinks in, and becomes English (US) when the work is **produced** and the
+document moves to `docs/`. A Portuguese draft in the queue is not a violation to
+be fixed: it is unfinished work in the language it is being thought in, and
+translating it or moving it out before the thing exists destroys the only place
+that thing exists.
 
-O histórico não se reescreve: mensagem em inglês que já está no log fica como
-está.
+History is not rewritten: Portuguese messages already in the log stay as they
+are.
 
-**A `.continue/` é fila, não registro.** Um documento só sai dela quando a coisa
-que ele descreve **existe** — tamanho, idioma e desalinho não são condição de
-saída. *Produzir* um item da fila é fazer a coisa existir, não editar, traduzir
-ou promover o documento; apagá-lo é o último passo do commit que carrega o
-trabalho. **Nunca esvazie essa pasta como arrumação.**
+**In a repository that is not ours, the upstream's conventions win — the
+language and the commit shape both.** Opening a pull request or an issue on a
+repository we do not own makes us guests, and a guest writes in the host's
+language. Our `X.Y.Z - description` is meaningless there anyway: they have no
+`version.md` of ours, and no version for us to bump.
 
-**Num repositório que não é nosso, a convenção do upstream vence** — o idioma e
-o formato do commit. Abrir um pull request ou uma issue num repositório de
-terceiro faz de nós convidados, e convidado escreve na língua da casa. Nosso
-`X.Y.Z - descrição` não significa nada lá: eles não têm um `version.md` nosso, e
-não há versão nossa para bumpar. Quando não der para saber, escreva **inglês
-(US)** — é a regra da casa da frota.
+**Check before you write, and the first signal that answers wins:** a written
+instruction (`CONTRIBUTING.md`, a pull request or issue template, a contribution
+section in the README), then the last ~20 merged pull requests, then the issues,
+then the commit log. A written instruction beats observed practice — if they ask
+for English and their log is Portuguese, write English. Below that line the
+**clear majority** decides, and clear means clear.
+
+**When you cannot tell, write English (US).** A private repository, an empty
+history, no network, a refused `gh` call and a genuinely mixed log all land in
+the same place — the house rule. Unverifiable is not a licence to guess.
+
+**This is a scope boundary, not a second carve-out.** Nothing in *our*
+repositories changes because a foreign one is Portuguese, and code identifiers
+are English wherever you are.
 
 <!-- /LANGUAGE-RULE -->
 
 <!-- CICD-RULE:repodocs -->
 
-## CI — o runner self-hosted da frota está aberto a qualquer repositório
+## CI — the fleet's self-hosted runner is open to every repository
 
-> Eco marcado. A fonte única é **[samirhvbr/repodocs](https://github.com/samirhvbr/repodocs/blob/master/docs/ci.md)**
-> — mude lá, não aqui. Este bloco é regenerado.
+> Marked echo. The single source is **[samirhvbr/repodocs](https://github.com/samirhvbr/repodocs/blob/master/docs/ci.md)**
+> — change it there, not here. This block is regenerated.
 
-**A frota tem uma máquina de CI, a `cicd`: um runner self-hosted do GitHub
-Actions que não gasta os minutos hospedados da conta.** Ela existe porque esse
-orçamento acabou em 25/09/2026 e todo job de repositório privado falhou em
-segundos, com zero passos.
+**The fleet has one CI machine, `cicd`: a self-hosted GitHub Actions runner that
+does not spend the account's hosted minutes.** It exists because that budget ran
+out on 25/09/2026 and every job in a private repository failed within seconds,
+with zero steps.
 
 | | |
 |---|---|
-| Endereço | `100.64.100.240` — só na rede do escritório. Espaço RFC 6598: não é roteável da internet |
-| Acesso | `ssh samir@100.64.100.240` |
-| Painel | `http://100.64.100.240:8080/` — somente leitura, sem login, só na rede do escritório. Mostra os jobs; **não** é por ali que um repositório entra |
+| Address | `100.64.100.240` — the office network only. RFC 6598 shared space: not routable from the internet |
+| Access | `ssh samir@100.64.100.240` |
+| Dashboard | `http://100.64.100.240:8080/` — read-only, no login, office network only. It shows the jobs; it is **not** how a repository joins |
 
-**Qualquer repositório pode usar, públicos incluídos** — decisão do dono em
-07/10/2026. Até essa data repositório público era proibido, e o motivo não
-desapareceu: **um pull request de qualquer fork roda o código do autor dele nesta
-máquina**, onde os jobs têm `sudo` sem senha e `docker`, o que é root efetivo
-numa máquina dentro da rede do escritório. No lugar da proibição fica um ajuste,
-por repositório: *Settings → Actions → Fork pull request workflows → **Require
-approval for all external contributors***. Em repositório público na `cicd`, esse
-ajuste não é opcional.
+**Every repository may use it, public ones included** — the owner's decision of
+07/10/2026. Until that date a public repository was forbidden, and the reason has
+not gone away: **a pull request from any fork runs its author's code on this
+machine**, where the jobs have passwordless `sudo` and `docker`, which is
+effectively root on a machine inside the office network. What stands where the
+prohibition stood is one setting, per repository: *Settings → Actions → Fork pull
+request workflows → **Require approval for all external contributors***. On a
+public repository on `cicd`, that setting is not optional.
 
-**Permissão não é destino.** O job lê
-`runs-on: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}`, então nada se move até
-alguém setar a variável:
-`gh variable set CI_RUNNER --body shvia-ci -R <dono>/<repo>` manda os jobs para a
-`cicd`, `gh variable delete CI_RUNNER -R <dono>/<repo>` devolve ao GitHub.
-**Nunca sete em escopo de organização** — isso retargeta todos os repositórios de
-uma vez, inclusive os públicos que hoje rodam de graça nos runners hospedados.
+**Permission is not destination.** A job reads
+`runs-on: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}`, so nothing moves until
+somebody sets the variable:
+`gh variable set CI_RUNNER --body shvia-ci -R <owner>/<repo>` sends the jobs to
+`cicd`, `gh variable delete CI_RUNNER -R <owner>/<repo>` hands them back to
+GitHub. **Never set it at organisation scope** — that retargets every repository
+at once, public ones that run free on hosted minutes included.
 
-**Entrar é pré-autorizado; registrar continua sendo ato do dono.** Um runner por
-repositório, registrado por SSH com um token de uma hora. Os jobs rodam com
-`sudo` numa máquina dentro da rede do escritório, então um agente **nunca
-registra runner por iniciativa própria**: ele diz o que falta e pergunta.
-Repositório de conta de terceiro não está coberto pela decisão acima — esse
-continua sendo decidido caso a caso.
+**Joining is pre-authorised; registering is still the owner's act.** One runner
+per repository, registered over SSH with a one-hour token. The jobs run with
+`sudo` on a machine inside the office network, so an agent **never registers a
+runner on its own initiative**: it says what is needed and asks. A repository
+belonging to somebody else's account is not covered by the decision above — that
+one is still decided case by case.
 
 <!-- /CICD-RULE -->
 
 <!-- QUEUE-RULE:repodocs -->
 
-## A fila esvazia por produção, e por mais nada
+## The queue empties by production, and by nothing else
 
-> Eco marcado. A fonte única é **[samirhvbr/repodocs](https://github.com/samirhvbr/repodocs/blob/master/docs/conventions.md#1-continue-is-the-queue--docs-is-what-has-been-produced)**
-> — mude lá, não aqui. Este bloco é regenerado.
+> Marked echo. The single source is **[samirhvbr/repodocs](https://github.com/samirhvbr/repodocs/blob/master/docs/conventions.md#1-continue-is-the-queue--docs-is-what-has-been-produced)**
+> — change it there, not here. This block is regenerated.
 
-**A `.continue/` guarda trabalho que ainda não existe.** Um documento só sai dela
-quando — e **somente quando** — a coisa que ele descreve **existe**. Tamanho não
-é condição de saída. Idade, idioma, desalinho, fim de sessão e agente que teria
-escrito diferente também não.
+**`.continue/` holds work that does not exist yet.** A document leaves it when —
+and **only** when — the thing it describes **exists**. Length is not an exit
+condition. Neither is age, language, untidiness, the end of a session, or an
+agent who would have written it differently.
 
-> `tela.md` diz *"uma tela preta com uma bola amarela no meio"*. Ele sai da fila
-> quando existir uma tela preta com uma bola amarela. Até lá ele fica, do
-> tamanho que for, na forma em que estiver — porque até lá ele é o único lugar
-> onde essa tela existe.
+> `tela.md` says *"a black screen with a yellow ball in the middle"*. It leaves
+> the queue when there is a black screen with a yellow ball. Until then it stays,
+> at any length, in whatever shape it is in — because until then it is the only
+> place that thing exists.
 
-**"Produzir" um item da fila é fazer a coisa existir.** Não é editar o
-documento, não é traduzir, não é promover para `docs/`. O documento é a
-especificação; a entrega é a coisa. Apagar o documento é o **último passo do
-commit que carrega o trabalho** — nunca um passo sozinho.
+**"Produce", applied to a queue item, means making the thing exist.** Not editing
+the document, not translating it, not promoting it to `docs/`. The document is
+the specification; the deliverable is the thing. Removing the document is the
+**last step of the commit that carries the work** — never a step of its own.
 
-**Nunca esvazie essa pasta como arrumação.** Um item apagado sem o trabalho
-feito destrói o único artefato que um projeto tem antes de ter código — e o que
-costuma ficar no lugar é pior que a perda: uma página em `docs/` descrevendo uma
-tela que ninguém construiu, indistinguível de uma que descreve algo que existe.
-Se um plano precisa aparecer em `docs/` antes de ser construído, ele é
-`PROPOSED`, nunca `ACTIVE`.
+**Never empty this folder as tidying.** A queue item deleted without the work
+being done destroys the only artefact a project has before it has code — and
+what usually replaces it is worse than the loss: a `docs/` page describing a
+screen nobody built, indistinguishable from a page describing one that exists.
+If a plan has to be visible in `docs/` before it is built, it is `PROPOSED`,
+never `ACTIVE`.
 
-**A regra da meia página é sobre registro que foi parar na fila**, e sobre nada
-mais. Ela não tem opinião sobre o tamanho de uma especificação de coisa não
-feita: um brief de 1.300 linhas sobre algo que não existe está no único lugar
-onde pode estar. Item longo é projeto com muita coisa por construir.
+**The half-a-page rule is about a record that ended up in the queue**, and about
+nothing else. It has no opinion on the length of a specification of unbuilt
+work: a 1,300-line brief about something that does not exist is in the only
+place it can be. A long queue item is a project with a lot still to build.
+
+**The queue is written in the language its author thinks in**, and becomes
+English (US) on the way out, when the work is produced and the document moves to
+`docs/`. A Portuguese draft in `.continue/` is not a violation to be fixed.
 
 <!-- /QUEUE-RULE -->
 
