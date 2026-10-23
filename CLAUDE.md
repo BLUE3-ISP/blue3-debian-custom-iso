@@ -11,10 +11,27 @@
 > **[samirhvbr/repodocs](https://github.com/samirhvbr/repodocs)** — read it
 > there; do not copy it here.
 >
-> Commits: `X.Y.Z - descrição curta em português`, com a versão de
-> `version.md`. Consulte os gatilhos locais de bump; correções documentais seguem
-> a exceção expressa quando existente. Prefixos convencionais e mensagens vagas
-> continuam proibidos. O bloco de idioma abaixo prevalece sobre exemplos antigos.
+> Commits: `X.Y.Z - short description in English (US)`, with the version from
+> `version.md`. Check the local bump triggers there; documentation fixes follow
+> its written exception where one exists. Conventional Commits prefixes and vague
+> messages remain forbidden. The language block below prevails over older examples.
+
+## Language — English (US) from 0.1.14 on
+
+**From 0.1.14 on, everything in this repository is written in English (US)** —
+documents, commit messages, pull request titles and bodies, issues, code
+comments, changelog entries and release notes. The reason is the owner rule of
+[repodocs](https://github.com/samirhvbr/repodocs/blob/master/docs/conventions.md#8-language):
+the language follows who owns the repository on GitHub, and on 23/10/2026 this one
+moved from `BLUE3-ISP` to `samirhvbr`, which puts it outside the Portuguese set.
+Decision by Samir, 23/10/2026.
+
+**History stays as it is.** The Portuguese commit messages already in `git log`
+are not rewritten, and a document already written in Portuguese stays Portuguese
+until it is next touched; the edit, or the whole file when that is practical,
+then comes out in English. Nothing is translated only because of this rule.
+The carve-outs, end-user-facing strings among them, are in the marked
+`LANGUAGE-RULE` block below.
 
 ---
 

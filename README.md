@@ -90,6 +90,6 @@ Esse comando confere sintaxe shell (o `break` interrompe no primeiro erro sem fe
 terminal, o que um `exit` faria); não executa build, preseed, rede ou systemd.
 O workflow versionado é de release, sem teste de instalação. Os insumos e a imagem
 final precisam de identificação/checksum e prova no alvo em um trabalho separado.
-[AGENTS.md](AGENTS.md) rege contribuições em português por PR; [version.md](version.md)
-isenta correções documentais de bump. O histórico útil foi preservado sem tratar
-intenções antigas como comportamento confirmado.
+[AGENTS.md](AGENTS.md) governs contributions, written in English (US) from 0.1.14 on;
+[version.md](version.md) exempts documentation fixes from a bump.
+O histórico útil foi preservado sem tratar intenções antigas como comportamento confirmado.

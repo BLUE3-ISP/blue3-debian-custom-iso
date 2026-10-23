@@ -33,19 +33,19 @@ Geração de ISO Debian customizada com instalação automatizada via preseed.
 
 ---
 
-## 2. Formato de Commit Obrigatório
+## 2. Required Commit Format
 
 ```
-X.Y.Z - Descrição curta em português
+X.Y.Z - Short description in English (US)
 ```
 
-**Regras inegociáveis:**
+**Non-negotiable rules:**
 
-1. A versão vem deste `version.md`; aplique os gatilhos de bump acima e a exceção documental expressa.
-2. Mensagem em **português**, específica o suficiente para `git log --grep`.
-3. **Proibido** Conventional Commits (`feat:`, `fix:`, `chore:`…) e mensagens vagas
-   ("ajuste", "update", "wip").
-4. Um objetivo por commit.
+1. The version comes from this `version.md`; apply the bump triggers above and the written documentation exception.
+2. Message in **English (US)** from 0.1.14 on, specific enough for `git log --grep`. Messages already in the log in Portuguese stay as they are.
+3. Conventional Commits (`feat:`, `fix:`, `chore:`…) and vague messages
+   ("ajuste", "update", "wip") are **forbidden**.
+4. One goal per commit.
 
 > O agente executa commit e push em branch de trabalho e abre PR. A automação
 > COMMITTER está desativada, conforme o bloco normativo atual de `AGENTS.md`.
